@@ -1,10 +1,12 @@
 import { Provider } from 'react-redux'
 import store from './store/store'
 
+import ProviderRouter from './routes/ProviderRouter'
+
 function App() {
   return (
     <Provider store={store}>
-      <h1>Task app</h1>
+      <ProviderRouter />
     </Provider>
   )
 }

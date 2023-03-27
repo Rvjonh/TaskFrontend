@@ -16,6 +16,16 @@ class TasksBackend {
         }).then(response => response.json())
     }
 
+    async signup(data: UserAccount) {
+        return fetch(APIEndpoint + '/rest-auth/signup/', {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        }).then(response => response.json())
+    }
+
     async resetPassword(email: string) {
         return fetch(APIEndpoint + '/rest-auth/password/reset/', {
             method: "post",

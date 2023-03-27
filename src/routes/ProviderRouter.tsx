@@ -6,6 +6,7 @@ import HomeRoute from './home';
 import LoginRoute from './login';
 import SignUpRoute from "./signup";
 import PasswordResetRoute from "./passwordReset";
+import PasswordResetConfirmationRoute from "./passwordResetConfirmation";
 
 import NoMatch from './noMatch'
 
@@ -19,6 +20,7 @@ export default function ProviderRouter() {
           <Route path="login" element={<LoginRoute />} />
           <Route path="signup" element={<SignUpRoute />} />
           <Route path="password-reset" element={<PasswordResetRoute />} />
+          <Route path="api/v1/password-reset/confirm/:id/:token/" element={<PasswordResetConfirmationRoute />} />
 
           <Route path="*" element={<NoMatch />} />
         </Route>

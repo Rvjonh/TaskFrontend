@@ -5,6 +5,8 @@ import { loadUser } from './../../store/loginSlice';
 import { UserAccount } from '../../interfaces/userAccount';
 import { Errors } from '../../interfaces/errorsRequest';
 
+import { ServerMessages } from './../../components/serverMessages'
+
 import TasksBackend from './../../services/tasksBackend';
 
 
@@ -23,7 +25,6 @@ export default function LoginRoute() {
         e.preventDefault()
         TasksBackend.login(userForm).then(res => {
             if ('token' in res) {
-                console.log(res)
                 dispatch(loadUser({ 'correo': userForm.email, 'identificador': res.token }));
             } else {
                 setErrors(res)
@@ -45,18 +46,7 @@ export default function LoginRoute() {
                 </label>
                 <button type="submit">Login</button>
             </form>
-            <div>
-                {errors && Object.entries(errors).map(([key, value]) => (
-                    <div key={key}>
-                        <h2>{key}</h2>
-                        <ul>
-                            {value.map((item) => (
-                                <li key={item}>{item}</li>
-                            ))}
-                        </ul>
-                    </div>
-                ))}
-            </div>
+            <ServerMessages messages={errors} />
         </div>
     )
 }

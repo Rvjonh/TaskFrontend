@@ -65,6 +65,17 @@ class TasksBackend {
             body: JSON.stringify(data)
         }).then(response => response.json())
     }
+
+    /* CRUD in tasks */
+
+    async getTasks(token: string) {
+        return fetch(APIEndpoint + '/tasks/', {
+            headers: {
+                "Content-Type": "application/json",
+                "AUTHORIZATION": "Token " + token
+            },
+        }).then(response => response.json())
+    }
 }
 
 export default new TasksBackend();

@@ -28,7 +28,7 @@ export const loginSlice = createSlice({
         },
         logoutUser() {
             localStorage.setItem("session", JSON.stringify(initialStateReset))
-            return initialState
+            return initialStateReset
         },
     },
 })

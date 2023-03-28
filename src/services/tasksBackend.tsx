@@ -2,7 +2,7 @@ const APIEndpoint = "http://localhost:8000/api/v1"
 
 import { UserAccount } from './../interfaces/userAccount'
 import { MyResetPasswordConfirmationForm } from "./../interfaces/passwordResetConfirmation";
-
+import { PasswordChangeForm } from './../interfaces/passwordChangeForm';
 
 class TasksBackend {
 
@@ -52,6 +52,17 @@ class TasksBackend {
             headers: {
                 "Content-Type": "application/json"
             },
+        }).then(response => response.json())
+    }
+
+    async changePassword(data: PasswordChangeForm, token: string) {
+        return fetch(APIEndpoint + '/rest-auth/password/change/', {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json",
+                "AUTHORIZATION": "Token " + token
+            },
+            body: JSON.stringify(data)
         }).then(response => response.json())
     }
 }

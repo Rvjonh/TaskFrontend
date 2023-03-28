@@ -37,6 +37,9 @@ export default function NavbarLink() {
           <Link to="/password-reset">Password Reset</Link>
         </li>
         <li>
+          <Link to="/password-change">Password Change</Link>
+        </li>
+        <li>
           <button onClick={handleLogout}>logout</button>
         </li>
       </ul>

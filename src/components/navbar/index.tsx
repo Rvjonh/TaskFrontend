@@ -42,6 +42,9 @@ export default function NavbarLink() {
         <li>
           <button onClick={handleLogout}>logout</button>
         </li>
+        <li>
+          <Link to="/task">Create Task</Link>
+        </li>
       </ul>
     </nav>
   );

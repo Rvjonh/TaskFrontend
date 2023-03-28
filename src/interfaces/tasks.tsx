@@ -11,3 +11,8 @@ export interface Task {
 export interface TaskList {
     tasks: Task[];
 }
+
+export interface TaskCreation {
+    "title": string;
+    "description": string;
+}

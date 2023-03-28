@@ -4,6 +4,8 @@ import { UserAccount } from './../interfaces/userAccount'
 import { MyResetPasswordConfirmationForm } from "./../interfaces/passwordResetConfirmation";
 import { PasswordChangeForm } from './../interfaces/passwordChangeForm';
 
+import { TaskCreation } from '../interfaces/tasks';
+
 class TasksBackend {
 
     async login(data: UserAccount) {
@@ -74,6 +76,17 @@ class TasksBackend {
                 "Content-Type": "application/json",
                 "AUTHORIZATION": "Token " + token
             },
+        }).then(response => response.json())
+    }
+
+    async createTask(task: TaskCreation, token: string) {
+        return fetch(APIEndpoint + '/tasks/', {
+            method: 'post',
+            headers: {
+                "Content-Type": "application/json",
+                "AUTHORIZATION": "Token " + token
+            },
+            body: JSON.stringify(task)
         }).then(response => response.json())
     }
 }

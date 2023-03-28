@@ -9,6 +9,8 @@ import PasswordResetRoute from "./passwordReset";
 import PasswordResetConfirmationRoute from "./passwordResetConfirmation";
 import PasswordChangeRoute from "./passwordChange";
 
+import TaskRoute from "./tasks";
+
 import NoMatch from './noMatch'
 
 export default function ProviderRouter() {
@@ -24,9 +26,11 @@ export default function ProviderRouter() {
           <Route path="password-change" element={<PasswordChangeRoute />} />
           <Route path="api/v1/password-reset/confirm/:id/:token/" element={<PasswordResetConfirmationRoute />} />
 
+          <Route path="task" element={<TaskRoute />} />
+
           <Route path="*" element={<NoMatch />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </BrowserRouter >
   )
 }

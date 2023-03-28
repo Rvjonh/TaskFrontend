@@ -20,10 +20,8 @@ export default function TaskHistoryRoute() {
             {tasks.length ?
                 tasks.map((task, key) => {
                     return (<article key={`task-${task.id}`} style={{ border: "2px solid black" }}>
-                        <p><Link to={`task/${task.id}/`}>{task.title}</Link></p>
+                        <p>{task.title}</p>
                         <p>{task.updated_at}</p>
-                        <Link to={`task/${task.id}/update/`}>Update</Link>
-                        <DeleteButton taskID={`${task.id}`} />
                     </article>)
                 })
                 :

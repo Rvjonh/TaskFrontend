@@ -11,7 +11,7 @@ import DeleteButton from './../../components/deleteButton';
 import TasksBackend from './../../services/tasksBackend';
 
 export default function TaskDetails() {
-    const activeUser = useIsLogged();
+    const activeUser = useIsLogged(undefined, '/');
     const taskId = useParams<{ id: string }>().id;
     const [selectedTask, setSelectedTask] = useState<Task>({
         "created_at": "",

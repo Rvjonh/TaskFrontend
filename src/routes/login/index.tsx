@@ -5,13 +5,16 @@ import { loadUser } from './../../store/loginSlice';
 import { UserAccount } from '../../interfaces/userAccount';
 import { Errors } from '../../interfaces/errorsRequest';
 
+import { useIsLogged } from '../../hooks/userIsLogged';
+
 import { ServerMessages } from './../../components/serverMessages'
 
 import TasksBackend from './../../services/tasksBackend';
 
 
-
 export default function LoginRoute() {
+    const activeUser = useIsLogged('/', undefined);
+
     const dispatch = useDispatch();
 
     const [userForm, setUserForm] = useState<UserAccount>({ email: "", password: "" });

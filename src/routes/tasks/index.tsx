@@ -18,7 +18,7 @@ export default function TaskRoute() {
     const navigate = useNavigate();
     const taskId = useParams<{ id: string }>().id;
     const dispatch = useDispatch();
-    const userActive = useIsLogged();
+    const userActive = useIsLogged(undefined, '/');
 
     const [serverMessages, setServerMessages] = useState<Errors>()
 

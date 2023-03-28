@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 
-import { RootState } from '../../store/store';
+import { useIsLogged } from '../../hooks/userIsLogged';
 import { PasswordChangeForm } from '../../interfaces/passwordChangeForm';
 import { Errors } from '../../interfaces/errorsRequest';
 
@@ -10,7 +9,7 @@ import { ServerMessages } from './../../components/serverMessages';
 import TasksBackend from './../../services/tasksBackend';
 
 export default function PasswordChangeRoute() {
-    const { identificador } = useSelector((state: RootState) => state.login)
+    const activeUser = useIsLogged(undefined, '/login');
 
     const [userForm, setUserForm] = useState<PasswordChangeForm>({
         "old_password": "",
@@ -25,7 +24,7 @@ export default function PasswordChangeRoute() {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        TasksBackend.changePassword(userForm, identificador).then(res => {
+        TasksBackend.changePassword(userForm, activeUser.token).then(res => {
             setMessages(res)
         })
     }

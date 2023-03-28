@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { Link } from "react-router-dom"
 
 import { Errors } from "../../interfaces/errorsRequest"
 
@@ -32,7 +33,7 @@ export default function PasswordResetRoute() {
 
     return (
         <div className='flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>
-            <div className='w-full max-w-md space-y-8'>
+            <div className='w-full max-w-md space-y-8 p-4 pb-10 square-back'>
 
                 <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Password Reset</h2>
                 <p className="text-justify">We will send you an email with a code to change your password</p>
@@ -55,6 +56,13 @@ export default function PasswordResetRoute() {
                                 placeholder="Email address"
                                 disabled={loading}
                             />
+                        </div>
+                    </div>
+                    <div className="flex items-center justify-start">
+                        <div className="text-sm">
+                            <Link to='/signup' className="font-medium text-indigo-600 hover:text-indigo-500">
+                                Register an account
+                            </Link>
                         </div>
                     </div>
                     <div>

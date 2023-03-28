@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.square-back {
+    border-radius: 5px;
+    background: #ffffff;
+    box-shadow: 30px 30px 95px #b5b5b5,
+        -30px -30px 95px #ffffff;
+}

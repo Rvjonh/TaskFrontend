@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from 'react-router-dom';
 import { useIsLogged } from "../../hooks/userIsLogged"
 import { RootState } from "../../store/store";
 
@@ -15,7 +16,6 @@ export default function HomeRoute() {
     useEffect(() => {
         if (userActive.active) {
             TasksBackend.getTasks(userActive.token).then(res => {
-                console.log(res)
                 dispatch(setTasks(res))
             })
         }
@@ -33,15 +33,15 @@ export default function HomeRoute() {
         <div>
             <h1>Home - Tasks</h1>
             <div>
-                {
-                    tasks.map((item, key) => {
-                        return (<article key={`task-${item.id}`} style={{ border: "2px solid black" }}>
-                            <p>{item.title}</p>
-                            <p>{item.description}</p>
-                            <p>{item.created_at}</p>
-                            <p>{item.updated_at}</p>
+                {tasks.length ?
+                    tasks.map((task, key) => {
+                        return (<article key={`task-${task.id}`} style={{ border: "2px solid black" }}>
+                            <p><Link to={`task/${task.id}/`}>{task.title}</Link></p>
+                            <p>{task.updated_at}</p>
                         </article>)
                     })
+                    :
+                    <h3>no tasks</h3>
                 }
             </div>
         </div>

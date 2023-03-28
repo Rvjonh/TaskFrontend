@@ -79,6 +79,15 @@ class TasksBackend {
         }).then(response => response.json())
     }
 
+    async getTask(idTask: string, token: string) {
+        return fetch(APIEndpoint + '/tasks/' + idTask + '/', {
+            headers: {
+                "Content-Type": "application/json",
+                "AUTHORIZATION": "Token " + token
+            },
+        }).then(response => response.json())
+    }
+
     async createTask(task: TaskCreation, token: string) {
         return fetch(APIEndpoint + '/tasks/', {
             method: 'post',

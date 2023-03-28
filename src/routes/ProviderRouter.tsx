@@ -11,6 +11,7 @@ import PasswordChangeRoute from "./passwordChange";
 
 import TaskRoute from "./tasks";
 import TaskDetailRoute from './taskDetail';
+import TaskHistoryRoute from './taskHistory'
 
 import NoMatch from './noMatch'
 
@@ -30,6 +31,8 @@ export default function ProviderRouter() {
           <Route path="task" element={<TaskRoute />} />
           <Route path="task/:id/" element={<TaskDetailRoute />} />
           <Route path="task/:id/update/" element={<TaskRoute />} />
+
+          <Route path="task/history/" element={<TaskHistoryRoute />} />
 
           <Route path="*" element={<NoMatch />} />
         </Route>

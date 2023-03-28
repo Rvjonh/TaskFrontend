@@ -45,6 +45,9 @@ export default function NavbarLink() {
         <li>
           <Link to="/task">Create Task</Link>
         </li>
+        <li>
+          <Link to="/task/history">History Task</Link>
+        </li>
       </ul>
     </nav>
   );

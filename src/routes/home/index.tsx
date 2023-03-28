@@ -6,6 +6,8 @@ import { RootState } from "../../store/store";
 
 import { setTasks } from './../../store/taskSlice';
 
+import DeleteButton from './../../components/deleteButton';
+
 import TasksBackend from './../../services/tasksBackend';
 
 export default function HomeRoute() {
@@ -39,6 +41,7 @@ export default function HomeRoute() {
                             <p><Link to={`task/${task.id}/`}>{task.title}</Link></p>
                             <p>{task.updated_at}</p>
                             <Link to={`task/${task.id}/update/`}>Update</Link>
+                            <DeleteButton taskID={`${task.id}`} />
                         </article>)
                     })
                     :

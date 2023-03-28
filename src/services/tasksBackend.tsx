@@ -110,6 +110,16 @@ class TasksBackend {
             body: JSON.stringify(task)
         })
     }
+
+    async deleteTask(taskid: string, token: string) {
+        return fetch(APIEndpoint + '/tasks/' + taskid + '/', {
+            method: 'delete',
+            headers: {
+                "Content-Type": "application/json",
+                "AUTHORIZATION": "Token " + token
+            },
+        })
+    }
 }
 
 export default new TasksBackend();

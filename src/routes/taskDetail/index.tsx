@@ -6,6 +6,7 @@ import { useIsLogged } from './../../hooks/userIsLogged';
 
 import { Errors } from '../../interfaces/errorsRequest';
 import { ServerMessages } from './../../components/serverMessages'
+import DeleteButton from './../../components/deleteButton';
 
 import TasksBackend from './../../services/tasksBackend';
 
@@ -60,6 +61,7 @@ export default function TaskDetails() {
                 <p>{selectedTask.created_at}</p>
                 <p>{selectedTask.updated_at}</p>
                 <Link to={`update/`}>Update</Link>
+                <DeleteButton taskID={`${taskId}`} redirect='/' />
             </article>
         </div>
     );

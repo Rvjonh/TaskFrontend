@@ -33,6 +33,16 @@ export default function HomeRoute() {
     }
     return (
         <div>
+            <nav>
+                <ul>
+                    <li>
+                        <Link to="/task">Create Task</Link>
+                    </li>
+                    <li>
+                        <Link to="/task/history">History Task</Link>
+                    </li>
+                </ul>
+            </nav>
             <h1>Home - Tasks</h1>
             <div>
                 {tasks.length ?

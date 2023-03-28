@@ -29,6 +29,7 @@ export default function ProviderRouter() {
 
           <Route path="task" element={<TaskRoute />} />
           <Route path="task/:id/" element={<TaskDetailRoute />} />
+          <Route path="task/:id/update/" element={<TaskRoute />} />
 
           <Route path="*" element={<NoMatch />} />
         </Route>

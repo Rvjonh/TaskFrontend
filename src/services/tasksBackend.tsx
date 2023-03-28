@@ -1,10 +1,11 @@
-const APIEndpoint = "http://localhost:8000/api/v1"
 
 import { UserAccount } from './../interfaces/userAccount'
 import { MyResetPasswordConfirmationForm } from "./../interfaces/passwordResetConfirmation";
 import { PasswordChangeForm } from './../interfaces/passwordChangeForm';
 
 import { TaskCreation } from '../interfaces/tasks';
+
+const APIEndpoint = "http://localhost:8000/api/v1"
 
 class TasksBackend {
 
@@ -85,7 +86,7 @@ class TasksBackend {
                 "Content-Type": "application/json",
                 "AUTHORIZATION": "Token " + token
             },
-        }).then(response => response.json())
+        })
     }
 
     async createTask(task: TaskCreation, token: string) {
@@ -96,7 +97,18 @@ class TasksBackend {
                 "AUTHORIZATION": "Token " + token
             },
             body: JSON.stringify(task)
-        }).then(response => response.json())
+        })
+    }
+
+    async updateTask(taskid: string, task: TaskCreation, token: string) {
+        return fetch(APIEndpoint + '/tasks/' + taskid + '/', {
+            method: 'put',
+            headers: {
+                "Content-Type": "application/json",
+                "AUTHORIZATION": "Token " + token
+            },
+            body: JSON.stringify(task)
+        })
     }
 }
 

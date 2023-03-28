@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { Task } from '../../interfaces/tasks';
 
 import { useIsLogged } from './../../hooks/userIsLogged';
+
+import { Errors } from '../../interfaces/errorsRequest';
+import { ServerMessages } from './../../components/serverMessages'
 
 import TasksBackend from './../../services/tasksBackend';
 
@@ -18,17 +21,34 @@ export default function TaskDetails() {
         "user": -1,
     });
 
+    const [serverMessages, setServerMessages] = useState<Errors>()
+
+
     useEffect(() => {
         if (activeUser.active && taskId != undefined) {
-            TasksBackend.getTask(taskId, activeUser.token).then(res => {
-                setSelectedTask(res)
-            })
+            TasksBackend.getTask(taskId, activeUser.token)
+                .then(res => {
+                    if (!res.ok) {
+                        throw { status: res.status, data: res.json() };
+                    }
+                    return res.json()
+                })
+                .then(res => {
+                    setSelectedTask(res)
+                })
+                .catch((err) => {
+                    err.data.then(setServerMessages);
+                })
+
         }
     }, [activeUser.active])
 
 
     if (!activeUser.active) {
         return <h1>You need to log in first</h1>
+    }
+    if (serverMessages) {
+        return <ServerMessages messages={serverMessages} />
     }
 
     return (
@@ -39,6 +59,7 @@ export default function TaskDetails() {
                 <p>{selectedTask.description}</p>
                 <p>{selectedTask.created_at}</p>
                 <p>{selectedTask.updated_at}</p>
+                <Link to={`update/`}>Update</Link>
             </article>
         </div>
     );

@@ -18,9 +18,12 @@ export const loginSlice = createSlice({
             state.correo = action.payload.correo
             state.identificador = action.payload.identificador
         },
+        logoutUser() {
+            return initialState
+        },
     },
 })
 
-export const { loadUser } = loginSlice.actions
+export const { loadUser, logoutUser } = loginSlice.actions
 
 export default loginSlice.reducer

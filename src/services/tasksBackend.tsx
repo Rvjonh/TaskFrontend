@@ -45,6 +45,15 @@ class TasksBackend {
             body: JSON.stringify(data)
         }).then(response => response.json())
     }
+
+    async logoutSession() {
+        return fetch(APIEndpoint + '/rest-auth/logout/', {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        }).then(response => response.json())
+    }
 }
 
 export default new TasksBackend();

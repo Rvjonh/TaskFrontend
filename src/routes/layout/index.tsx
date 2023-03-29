@@ -1,15 +1,21 @@
-import { Link, Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 
 import NavbarLink from './../../components/navbar'
 import { TaskNavbar } from '../../components/tasksNavbar';
 
+import { useIsLogged } from '../../hooks/userIsLogged';
+
 export function Layout() {
+  const userActive = useIsLogged()
+
   return (
     <div>
 
       <NavbarLink />
 
-      <TaskNavbar />
+      {userActive.active &&
+        <TaskNavbar />
+      }
 
       <Outlet />
 

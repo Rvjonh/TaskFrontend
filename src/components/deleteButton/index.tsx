@@ -24,7 +24,7 @@ export default function DeleteButton({ taskID,
     buttonTextConfirmation = 'Delete',
     buttonTextCancel = 'Cancel',
     title = "Delete Task",
-    message = "Are you sure to want to delete it?" }: ButtonDeleteArgs) {
+    message = "Are you sure you want to delete it?" }: ButtonDeleteArgs) {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();

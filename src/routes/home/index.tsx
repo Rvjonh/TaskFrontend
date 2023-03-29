@@ -8,6 +8,8 @@ import { setTasks } from './../../store/taskSlice';
 
 import DeleteButton from './../../components/deleteButton';
 
+import UserImge from './../../assets/user.png';
+
 import TasksBackend from './../../services/tasksBackend';
 
 export default function HomeRoute() {
@@ -26,23 +28,34 @@ export default function HomeRoute() {
 
     if (!userActive.active) {
         return (
-            <div>
-                <h1>You need to log in to see your tasks</h1>
+            <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+                <div className='w-full max-w-md space-y-8 p-4 pb-10 square-back'>
+                    <div className="border-2 border-black-500 p-4">
+                        <div className="flex justify-center">
+                            <img className="w-16 md:w-32 lg:w-48" src={UserImge} />
+                        </div>
+
+                        <h2 className="text-center py-5">You need to log in to see your tasks</h2>
+
+                        <div className="flex justify-around py-5">
+                            <Link to='/login'
+                                className="group relative flex w-full flex-col justify-center
+                                items-center rounded-md  py-2 px-3 text-sm font-semibold text-white  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 bg-green-600 hover:bg-green-500">
+                                Login
+                            </Link>
+                            <Link to='/signup'
+                                className="group relative flex w-full flex-col justify-center
+                                items-center rounded-md  py-2 px-3 text-sm font-semibold text-white  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 bg-blue-600 hover:bg-blue-500">
+                                SignUp
+                            </Link>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
     return (
-        <div>
-            <nav>
-                <ul>
-                    <li>
-                        <Link to="/task">Create Task</Link>
-                    </li>
-                    <li>
-                        <Link to="/task/history">History Task</Link>
-                    </li>
-                </ul>
-            </nav>
+        <div >
             <h1>Home - Tasks</h1>
             <div>
                 {tasks.length ?

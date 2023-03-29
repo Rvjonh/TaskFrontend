@@ -13,9 +13,12 @@ export const historySlice = createSlice({
         addTask(state, action) {
             state.tasks.push(action.payload);
         },
+        resetTasks() {
+            return initialState;
+        }
     },
 })
 
-export const { addTask } = historySlice.actions
+export const { addTask, resetTasks } = historySlice.actions
 
 export default historySlice.reducer

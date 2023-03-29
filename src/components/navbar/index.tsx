@@ -1,9 +1,11 @@
 import { Fragment } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+
 
 import { RootState } from '../../store/store';
 import { logoutUser } from './../../store/loginSlice';
+import { resetTasks } from "../../store/historySlice";
 
 import { useIsLogged } from '../../hooks/userIsLogged';
 
@@ -19,6 +21,7 @@ const navigation = [
 ]
 
 export default function NavbarLink() {
+  const navigate = useNavigate()
   const { correo } = useSelector((state: RootState) => state.login);
   const dispatch = useDispatch();
   const userActive = useIsLogged();
@@ -27,12 +30,14 @@ export default function NavbarLink() {
     try {
       TasksBackend.logoutSession()
         .then(res => {
-          dispatch(logoutUser())
+          // Session closed
         })
-      dispatch(logoutUser())
     } catch (error) {
-      dispatch(logoutUser())
+      //if any error happens
     }
+    dispatch(logoutUser())
+    dispatch(resetTasks())
+    navigate('/login')
   }
 
   function classNames(...classes: string[]) {

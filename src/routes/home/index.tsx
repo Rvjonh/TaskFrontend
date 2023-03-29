@@ -56,16 +56,33 @@ export default function HomeRoute() {
     }
     return (
         <div >
-            <h1>Home - Tasks</h1>
-            <div>
+            <h2 className="sm:mt-4 sm:mb-4 text-center text-3xl font-bold tracking-tight text-gray-900">
+                Home - Tasks
+            </h2>
+            <div className="flex flex-col justify-center items-center">
                 {tasks.length ?
                     tasks.map((task, key) => {
-                        return (<article key={`task-${task.id}`} style={{ border: "2px solid black" }}>
-                            <p><Link to={`task/${task.id}/`}>{task.title}</Link></p>
-                            <p>{task.updated_at}</p>
-                            <Link to={`task/${task.id}/update/`}>Update</Link>
-                            <DeleteButton taskID={`${task.id}`} />
-                        </article>)
+                        return (
+                            <article key={`task-${task.id}`} className="w-full my-2 rounded border-4 border-black-900 flex p-1"
+                                style={{ maxWidth: "40em" }}
+                            >
+                                <div className="flex-1 border-2 border-black-900 rounded overflow-hidden whitespace-nowrap">
+                                    <Link to={`task/${task.id}/`}
+                                        className="w-full rounded block p-1 text-lg overflow-hidden whitespace-nowrap 
+                                        hover:bg-stone-300 transition duration-250"
+                                    >
+                                        {task.title}
+                                    </Link>
+                                </div>
+                                <div className="flex items-center">
+                                    <Link to={`task/${task.id}/update/`}
+                                        className="group relative flex justify-center rounded-md  py-2 px-3 text-sm font-semibold text-white  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 hover:bg-green-500 bg-green-600"
+                                    >
+                                        Update
+                                    </Link>
+                                    <DeleteButton taskID={`${task.id}`} />
+                                </div>
+                            </article>)
                     })
                     :
                     <h3>no tasks</h3>

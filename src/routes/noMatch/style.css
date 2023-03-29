@@ -1,0 +1,59 @@
+.main-noPageFound {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    text-align: center;
+}
+
+.main-noPageFound .back-img-noPageFound {
+    width: 100%;
+    max-width: 50em;
+}
+
+.main-noPageFound .back-img-noPageFound img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.main-noPageFound .title-noPageFound {
+    color: rgb(255, 255, 255);
+    background-color: rgb(30, 205, 255);
+    padding: .4em;
+    border-radius: .4em;
+    margin-top: -2em;
+}
+
+.main-noPageFound .subtitle-noPageFound {
+    color: rgb(0, 0, 0);
+}
+
+.panel-buttons {
+    margin-top: 1em;
+    width: 100%;
+    max-width: 40em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.panel-buttons * {
+    margin: 0.2em;
+}
+
+@media screen and(min-width:35em) {
+    .panel-buttons {
+        justify-content: space-around;
+        flex-direction: row;
+    }
+
+    .main-noPageFound .title-noPageFound {
+        margin-top: -4em;
+    }
+}

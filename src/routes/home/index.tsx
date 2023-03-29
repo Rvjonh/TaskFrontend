@@ -85,7 +85,9 @@ export default function HomeRoute() {
                             </article>)
                     })
                     :
-                    <h3>no tasks</h3>
+                    <div className="flex justify-center mt-5">
+                        <p className="text-bold text-green-700 text-4xl">No task, Add a new one</p>
+                    </div>
                 }
             </div>
         </div>

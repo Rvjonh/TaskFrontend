@@ -25,7 +25,7 @@ export default function TaskHistoryRoute() {
                     {tasks.length ?
                         tasks.map((task, key) => {
                             return (
-                                <article key={`task-${task.id}`} className="w-full my-2 rounded border-4 border-black-900 flex flex-col p-1 max-w-4xl"
+                                <article key={`task-${task.id}`} className="w-full my-2 rounded border-4 border-black-900 flex flex-col p-1 max-w-4xl bg-neutral-50"
                                 >
                                     <div className="flex-1 border-2 border-black-900 rounded ">
                                         <h3 className="w-full rounded block p-1 text-lg  transition duration-250"

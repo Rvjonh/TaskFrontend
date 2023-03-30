@@ -63,7 +63,7 @@ export default function HomeRoute() {
                 {tasks.length ?
                     tasks.map((task, key) => {
                         return (
-                            <article key={`task-${task.id}`} className="w-full my-2 rounded border-4 border-black-900 flex p-1"
+                            <article key={`task-${task.id}`} className="w-full my-2 rounded border-4 border-black-900 flex p-1 bg-slate-100"
                                 style={{ maxWidth: "40em" }}
                             >
                                 <div className="flex-1 border-2 border-black-900 rounded overflow-hidden whitespace-nowrap">

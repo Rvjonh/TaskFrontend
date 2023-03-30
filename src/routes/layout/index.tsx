@@ -5,11 +5,13 @@ import { TaskNavbar } from '../../components/tasksNavbar';
 
 import { useIsLogged } from '../../hooks/userIsLogged';
 
+import AnimatedFooter from '../../components/animatedFooter';
+
 export function Layout() {
   const userActive = useIsLogged()
 
   return (
-    <div>
+    <div className='min-h-screen flex flex-col relative'>
 
       <NavbarLink />
 
@@ -19,6 +21,7 @@ export function Layout() {
 
       <Outlet />
 
+      <AnimatedFooter />
     </div>
   );
 }

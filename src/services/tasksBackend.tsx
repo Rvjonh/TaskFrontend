@@ -5,7 +5,7 @@ import { PasswordChangeForm } from './../interfaces/passwordChangeForm';
 
 import { TaskCreation } from '../interfaces/tasks';
 
-const APIEndpoint = "http://localhost:8000/api/v1"
+const APIEndpoint = import.meta.env.VITE_BACKEND_ENDPOINT
 
 class TasksBackend {
 
